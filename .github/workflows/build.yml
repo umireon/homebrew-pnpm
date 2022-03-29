@@ -6,7 +6,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Build bottles
-        run: -|
+        run: |-
           VERSION=v6.18.0
           mkdir -p workdir
           cd workdir
