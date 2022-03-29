@@ -3,7 +3,7 @@ on:
   pull_request:
 jobs:
   test-bot:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
