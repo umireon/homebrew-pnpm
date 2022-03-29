@@ -10,8 +10,8 @@ jobs:
       - name: Install ldid
         run: |-
           OLDPWD=$(pwd)
-          apt-get update
-          apt-get install git build-essential libplist-dev libssl-dev openssl qemu-user-binfmt
+          sudo apt-get update
+          sudo apt-get install git build-essential libplist-dev libssl-dev openssl qemu-user-binfmt
           cd /tmp
           git clone git://git.saurik.com/ldid.git
           cd ldid
