@@ -1,8 +1,5 @@
 name: build
 on:
-  push:
-    branches:
-      - main
   pull_request:
 jobs:
   test-bot:
@@ -48,10 +45,9 @@ jobs:
                 "pnpm-exe/${VERSION#v}"
             )
           }
-
-        bottle macos-arm64 arm64_big_sur
-        bottle macos-x64 big_sur
-        bottle linuxstatic-x64 x86_64_linux
+          bottle macos-arm64 arm64_big_sur
+          bottle macos-x64 big_sur
+          bottle linuxstatic-x64 x86_64_linux
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
