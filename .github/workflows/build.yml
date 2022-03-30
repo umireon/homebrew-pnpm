@@ -11,17 +11,14 @@ jobs:
       - name: Set up git
         uses: Homebrew/actions/git-user-config@master
 
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Update pnpm-exe.rb
-        run: bash Script/pnpm-exe.rb.sh v6.18.0
+        run: bash $(brew --repo umireon/pnpm)/Script/pnpm-exe.rb.sh v6.18.0
 
       - name: Install ldid
-        run: bash Script/install-ldid.sh
+        run: bash $(brew --repo umireon/pnpm)/Script/install-ldid.sh
 
       - name: Build bottles
-        run: bash Script/build-bottles.sh v6.18.0
+        run: bash $(brew --repo umireon/pnpm)/Script/build-bottles.sh v6.18.0
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
