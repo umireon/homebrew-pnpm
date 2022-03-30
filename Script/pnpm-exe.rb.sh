@@ -71,3 +71,4 @@ class PnpmExe < Formula
   end
 end
 EOS
+cp Formula/pnpm-exe.rb "$(brew --repo umireon/pnpm)/Formula"
