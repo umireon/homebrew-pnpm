@@ -6,13 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: checkout@v3
-
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Set up git
-        uses: Homebrew/actions/git-user-config@master
+        uses: actions/checkout@v3
 
       - name: Update pnpm-exe.rb
         run: bash Script/pnpm-exe.rb.sh v6.18.0
@@ -29,6 +23,12 @@ jobs:
         with:
           name: bottles
           path: '/tmp/*.bottle.*'
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Set up git
+        uses: Homebrew/actions/git-user-config@master
 
       - name: Pull bottles
         env:
