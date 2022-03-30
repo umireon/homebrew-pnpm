@@ -5,6 +5,9 @@ jobs:
   test-bot:
     runs-on: ubuntu-latest
     steps:
+      - name: Update pnpm-exe.rb
+        run: bash Script/pnpm-exe.rb.sh
+
       - name: Install ldid
         run: bash Script/install-ldid.sh
 
@@ -16,7 +19,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: bottles
-          path: '*.bottle.*'
+          path: '/tmp/*.bottle.*'
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master

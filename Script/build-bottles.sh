@@ -1,10 +1,10 @@
 
 #!/bin/bash
+VERSION="$1"
+
 set -euo pipefail
-VERSION=v6.18.0
 REPO=$(pwd)
-mkdir -p workdir
-cd workdir
+cd $(mktemp -d)
 curl -fsSLo pnpm.tar.gz https://github.com/pnpm/pnpm/archive/refs/tags/${VERSION}.tar.gz
 tar --strip-component 1 -xzf pnpm.tar.gz
 mkdir -p bootstrap
@@ -36,7 +36,7 @@ bottle() {
       --group 0 \
       --sort name \
       --pax-option globexthdr.name=/GlobalHead.%n,exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-      --file "../pnpm-exe-${VERSION#v}.$2.bottle.tar.gz" \
+      --file "/tmp/pnpm-exe-${VERSION#v}.$2.bottle.tar.gz" \
       "pnpm-exe/${VERSION#v}"
   )
 }
